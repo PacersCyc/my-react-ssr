@@ -20,7 +20,8 @@
   "homepage": "https://github.com/PacersCyc/my-react-ssr#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "react": "^16.8.6"
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
