@@ -6,6 +6,8 @@ import Home from './containers/Home'
 const app = express();
 const content = renderToString(<Home />)
 
+app.use(express.static('public'))
+
 app.get('/', function(req, res) {
   res.send(`
     <html>
@@ -13,7 +15,8 @@ app.get('/', function(req, res) {
         <title>ssr</title>
       </head>
       <body>
-        ${content}
+        <div id="root">${content}</div>
+        <script src="/index.js"></script>
       </body>
     </html>
   `)
