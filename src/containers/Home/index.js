@@ -6,7 +6,9 @@ import { getHomeList } from './store/actions'
 class Home extends Component {
   // 服务端渲染阶段不执行该方法
   componentDidMount() {
-    this.props.getHomeList()
+    if (!this.props.list.length) {
+      this.props.getHomeList()
+    }
   }
 
   renderList() {
