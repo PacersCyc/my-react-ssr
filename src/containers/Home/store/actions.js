@@ -12,7 +12,7 @@ const changeList = (list) => ({
 
 export const getHomeList = () => {
   return (dispatch) => {
-    axios.get(url3).then(res => {
+    return axios.get(url3).then(res => {
       console.log(res);
       dispatch(changeList(res.data.data.sports))
     })

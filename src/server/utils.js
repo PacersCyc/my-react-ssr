@@ -3,20 +3,8 @@ import { renderToString } from 'react-dom/server'
 import { Route, StaticRouter, matchPath } from 'react-router-dom';
 import routes from '../Routes';
 import { Provider } from 'react-redux'
-import getStore from '../store'
 
-export const render = (req) => {
-  const store = getStore();
-
-  const matchRoutes = []
-  routes.some(route => {
-    const match = matchPath(req.path, route);
-    if (match) {
-      matchRoutes.push(route)
-    }
-  })
-  console.log(matchRoutes)
-
+export const render = (req, store) => {
   const content = renderToString((
     <Provider store={store}>
       <StaticRouter location={req.path} context={{}}>
@@ -26,6 +14,7 @@ export const render = (req) => {
       </StaticRouter>
     </Provider> 
   ))
+
   return `
     <html>
       <head>
