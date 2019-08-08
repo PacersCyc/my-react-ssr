@@ -1,4 +1,5 @@
 import express from 'express'
+import proxy from 'express-http-proxy'
 import { matchRoutes } from 'react-router-config'
 import { render } from './utils'
 import routes from '../Routes';
@@ -7,6 +8,13 @@ import { getStore}  from '../store'
 const app = express();
 
 app.use(express.static('public'))
+
+app.use('/api', proxy('https://www.apiopen.top', {
+  proxyReqPathResolver: function (req) {
+    console.log(req.url)
+    return '/journalismApi'
+  }
+}));
 
 app.get('*', function(req, res) {
   const store = getStore();
@@ -21,7 +29,7 @@ app.get('*', function(req, res) {
   Promise.all(promises).then(() => {
     res.send(render(req, store))
   })
-  // render(req, res);
+  // res.send(render(req, store))
 });
 
 var server = app.listen(3000);
