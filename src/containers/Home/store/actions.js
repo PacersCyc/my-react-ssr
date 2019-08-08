@@ -11,8 +11,8 @@ const changeList = (list) => ({
 
 export const getHomeList = () => {
   return (dispatch, getState, axiosInstance) => {
-    return axiosInstance.get('/journalismApi').then(res => {
-      console.log(res);
+    return axiosInstance.get('/api/journalismApi').then(res => {
+      // console.log(res.data);
       dispatch(changeList(res.data.data.sports))
     }).catch(err => {
       console.log(err)

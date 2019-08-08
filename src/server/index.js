@@ -9,10 +9,11 @@ const app = express();
 
 app.use(express.static('public'))
 
-app.use('/journalismApi', proxy('https://www.apiopen.top', {
+app.use('/api', proxy('https://www.apiopen.top', {
   proxyReqPathResolver: function (req) {
-    console.log(req.url)
-    return '/journalismApi'
+    console.log(req.url + '------')
+    // return '/journalismApi'
+    return req.url
   }
 }));
 
