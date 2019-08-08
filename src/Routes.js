@@ -3,6 +3,7 @@ import React from 'react';
 import App from './App'
 import Home from './containers/Home';
 import Login from './containers/Login';
+import Novel from './containers/Novel'
 
 // export default (
 //   <div>
@@ -29,6 +30,13 @@ export default [
         component: Login,
         exact: true,
         key: 'login'
+      },
+      {
+        path: '/novel',
+        component: Novel,
+        exact: true,
+        key: 'novel',
+        loadData: Novel.loadData
       }
     ]
   }
