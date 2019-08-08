@@ -1,7 +1,4 @@
-import axios from 'axios'
 import { CHANGE_LIST } from './constants'
-import clientAxios from '../../../client/request'
-import serverAxios from '../../../server/request'
 
 const url1 = 'http://47.95.113.63/ssr/api/news.json'
 const url2 = 'https://3g.163.com/touch/reconstruct/article/list/BBM54PGAwangning/0-10.html'
@@ -12,10 +9,9 @@ const changeList = (list) => ({
   list
 })
 
-export const getHomeList = (server) => {
-  const request = server ? serverAxios : clientAxios;
-  return (dispatch) => {
-    return request.get('/journalismApi').then(res => {
+export const getHomeList = () => {
+  return (dispatch, getState, axiosInstance) => {
+    return axiosInstance.get('/journalismApi').then(res => {
       console.log(res);
       dispatch(changeList(res.data.data.sports))
     }).catch(err => {

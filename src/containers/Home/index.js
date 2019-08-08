@@ -7,7 +7,7 @@ class Home extends Component {
   // 服务端渲染阶段不执行该方法
   componentDidMount() {
     if (!this.props.list.length) {
-      this.props.getHomeList(false)
+      this.props.getHomeList()
     }
   }
 
@@ -34,7 +34,7 @@ class Home extends Component {
 }
 
 Home.loadData = (store) => {
-  return store.dispatch(getHomeList(true))
+  return store.dispatch(getHomeList())
 }
 
 const mapStateToProps = state => ({
