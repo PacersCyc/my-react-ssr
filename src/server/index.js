@@ -18,7 +18,7 @@ app.use('/api', proxy('https://www.apiopen.top', {
 }));
 
 app.get('*', function(req, res) {
-  const store = getStore();
+  const store = getStore(req);
   // 根据路由获取对应路由组件的loadData方法，执行后获取数据并传入store
   const matchedRoutes = matchRoutes(routes, req.path);
   const promises = []
@@ -27,6 +27,7 @@ app.get('*', function(req, res) {
       promises.push(item.route.loadData(store));
     }
   })
+  // console.log(promises)
   Promise.all(promises).then(() => {
     res.send(render(req, store))
   })

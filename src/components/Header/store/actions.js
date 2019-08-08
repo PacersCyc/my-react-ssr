@@ -10,6 +10,7 @@ export const login = () => {
     return axiosInstance.get('/api/createUserKey?appId=com.chat.peakchao&passwd=123456').then(res => {
       console.log(res.data);
       let status = res.data.code === 200
+      localStorage.password = '123456'
       dispatch(changeLogin(status))
     }).catch(err => {
       console.log(err)
@@ -22,6 +23,7 @@ export const logout = () => {
     return axiosInstance.get('/api/createUserKey?appId=com.chat.peakchao&passwd=123').then(res => {
       console.log(res.data);
       let status = res.data.code === 200
+      localStorage.password = '123'
       dispatch(changeLogin(status))
     }).catch(err => {
       console.log(err)
@@ -31,7 +33,8 @@ export const logout = () => {
 
 export const getHeaderInfo = () => {
   return (dispatch, getState, axiosInstance) => {
-    return axiosInstance.get('/api/createUserKey?appId=com.chat.peakchao&passwd=12345').then(res => {
+    let password = '123'
+    return axiosInstance.get(`/api/createUserKey?appId=com.chat.peakchao&passwd=${password}`).then(res => {
       console.log(res.data);
       let status = res.data.code === 200
       dispatch(changeLogin(status))
