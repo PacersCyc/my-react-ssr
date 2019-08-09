@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { getNovelList } from './store/actions'
+import styles from './style.css'
+import withStyles from '../../withStyle'
 
 class Novel extends Component {
   componentDidMount() {
@@ -23,7 +25,7 @@ class Novel extends Component {
   render() {
     if (this.props.login) {
       return (
-        <div>
+        <div className={styles.test}>
           {this.renderList()}
         </div>
       )
@@ -45,7 +47,7 @@ const mapDispatchToProps = dispatch => ({
 })
 
 
-const ExportNovel = connect(mapStateToProps, mapDispatchToProps)(Novel)
+const ExportNovel = connect(mapStateToProps, mapDispatchToProps)(withStyles(Novel, styles));
 
 ExportNovel.loadData = (store) => {
   return store.dispatch(getNovelList())

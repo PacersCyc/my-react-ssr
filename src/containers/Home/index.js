@@ -2,14 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { getHomeList } from './store/actions'
 import styles from './style.css'
+import withStyles from '../../withStyle'
 
 class Home extends Component {
-  componentWillMount() {
-    if (this.props.staticContext) {
-      this.props.staticContext.css.push(styles._getCss())
-    }
-  }
-
   // 服务端渲染阶段不执行该方法
   componentDidMount() {
     if (!this.props.list.length) {
@@ -48,7 +43,7 @@ const mapDispatchToProps = dispatch => ({
   }
 })
 
-const ExportHome = connect(mapStateToProps, mapDispatchToProps)(Home);
+const ExportHome = connect(mapStateToProps, mapDispatchToProps)(withStyles(Home, styles));
 
 ExportHome.loadData = (store) => {
   return store.dispatch(getHomeList())

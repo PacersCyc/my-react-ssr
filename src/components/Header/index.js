@@ -3,14 +3,9 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { actions } from './store'
 import styles from './style.css'
+import withStyles from '../../withStyle'
 
 class Header extends Component {
-  componentWillMount() {
-    if (this.props.staticContext) {
-      this.props.staticContext.css.push(styles._getCss())
-    }
-  }
-
   render() {
     const { login, handleLogin, handleLogout } = this.props
     return (
@@ -46,4 +41,4 @@ const mapDispatchToProps = (dispatch) => ({
   }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header)
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(Header, styles))
