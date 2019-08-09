@@ -33,7 +33,9 @@ app.get('*', function(req, res) {
   })
   // console.log(promises)
   Promise.all(promises).then(() => {
-    const context = {}
+    const context = {
+      css: []
+    }
     const html = render(req, store, context)
     console.log(context)
     if(context.action === 'REPLACE') {
