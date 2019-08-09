@@ -38,10 +38,6 @@ class Home extends Component {
   }
 }
 
-Home.loadData = (store) => {
-  return store.dispatch(getHomeList())
-}
-
 const mapStateToProps = state => ({
   list: state.home.newsList
 })
@@ -52,4 +48,9 @@ const mapDispatchToProps = dispatch => ({
   }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+const ExportHome = connect(mapStateToProps, mapDispatchToProps)(Home);
+
+ExportHome.loadData = (store) => {
+  return store.dispatch(getHomeList())
+}
+export default ExportHome;

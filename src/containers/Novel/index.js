@@ -33,10 +33,6 @@ class Novel extends Component {
   }
 }
 
-Novel.loadData = (store) => {
-  return store.dispatch(getNovelList())
-}
-
 const mapStateToProps = state => ({
   list: state.novel.novelList,
   login: state.header.login
@@ -48,4 +44,11 @@ const mapDispatchToProps = dispatch => ({
   }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Novel)
+
+const ExportNovel = connect(mapStateToProps, mapDispatchToProps)(Novel)
+
+ExportNovel.loadData = (store) => {
+  return store.dispatch(getNovelList())
+}
+
+export default ExportNovel

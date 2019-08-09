@@ -6,7 +6,6 @@ import styles from './style.css'
 
 class Header extends Component {
   componentWillMount() {
-    console.log(this.props.staticContext)
     if (this.props.staticContext) {
       this.props.staticContext.css.push(styles._getCss())
     }
