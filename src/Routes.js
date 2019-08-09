@@ -4,6 +4,7 @@ import App from './App'
 import Home from './containers/Home';
 import Login from './containers/Login';
 import Novel from './containers/Novel'
+import NotFound from './containers/NotFound'
 
 // export default (
 //   <div>
@@ -37,6 +38,9 @@ export default [
         exact: true,
         key: 'novel',
         loadData: Novel.loadData
+      },
+      {
+        component: NotFound
       }
     ]
   }

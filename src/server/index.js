@@ -29,9 +29,16 @@ app.get('*', function(req, res) {
   })
   // console.log(promises)
   Promise.all(promises).then(() => {
-    res.send(render(req, store))
+    const context = {}
+    const html = render(req, store, context)
+    console.log(context)
+    if (context.notFound) {
+      res.status(404)
+      res.send(html)
+    } else {
+      res.send(html)
+    }    
   })
-  // res.send(render(req, store))
 });
 
 var server = app.listen(3000);
