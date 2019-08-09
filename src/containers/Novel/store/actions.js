@@ -8,7 +8,7 @@ const changeList = (list) => ({
 export const getNovelList = () => {
   return (dispatch, getState, axiosInstance) => {
     return axiosInstance.get('/api/novelApi').then(res => {
-      console.log(res.data);
+      // console.log(res.data);
       if (res.data.code === 200) {
         const list = res.data.data
         dispatch(changeList(list))

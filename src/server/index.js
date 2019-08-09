@@ -32,7 +32,9 @@ app.get('*', function(req, res) {
     const context = {}
     const html = render(req, store, context)
     console.log(context)
-    if (context.notFound) {
+    if(context.action === 'REPLACE') {
+      res.redirect(301, context.url)
+    }else if (context.notFound) {
       res.status(404)
       res.send(html)
     } else {
