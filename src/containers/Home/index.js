@@ -4,6 +4,12 @@ import { getHomeList } from './store/actions'
 import styles from './style.css'
 
 class Home extends Component {
+  componentWillMount() {
+    if (this.props.staticContext) {
+      this.props.staticContext.css = styles._getCss()
+    }
+  }
+
   // 服务端渲染阶段不执行该方法
   componentDidMount() {
     if (!this.props.list.length) {
