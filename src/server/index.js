@@ -24,7 +24,11 @@ app.get('*', function(req, res) {
   const promises = []
   matchedRoutes.forEach(item => {
     if(item.route.loadData) {
-      promises.push(item.route.loadData(store));
+      // 封装一层promise，无论请求失败成功均resolve下一层
+      const promise = new Promise((resolve, reject) => {
+        item.route.loadData(store).then(resolve).catch(resolve)
+      })
+      promises.push(promise);
     }
   })
   // console.log(promises)
@@ -40,6 +44,8 @@ app.get('*', function(req, res) {
     } else {
       res.send(html)
     }    
+  }).catch(err => {
+    // res.send('sorry, request error!')
   })
 });
 
