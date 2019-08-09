@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { getHomeList } from './store/actions'
+import styles from './style.css'
 
 class Home extends Component {
   // 服务端渲染阶段不执行该方法
@@ -13,7 +14,7 @@ class Home extends Component {
   renderList() {
     const { list } = this.props;
     return list.map((item, index) => (
-      <div key={index}>
+      <div className={styles.test} key={index}>
         <a href={item.link} target="_blank">{item.title}</a>
       </div>
     ))
