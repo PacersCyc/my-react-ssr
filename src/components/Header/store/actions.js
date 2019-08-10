@@ -33,7 +33,7 @@ export const logout = () => {
 
 export const getHeaderInfo = () => {
   return (dispatch, getState, axiosInstance) => {
-    let password = '123'
+    let password = '123456'
     return axiosInstance.get(`/api/createUserKey?appId=com.chat.peakchao&passwd=${password}`).then(res => {
       // console.log(res.data);
       let status = res.data.code === 200

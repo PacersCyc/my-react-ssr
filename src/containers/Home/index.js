@@ -15,7 +15,7 @@ class Home extends Component {
   renderList() {
     const { list } = this.props;
     return list.map((item, index) => (
-      <div className={styles.test} key={index}>
+      <div className={styles.item} key={index}>
         <a href={item.link} target="_blank">{item.title}</a>
       </div>
     ))
@@ -23,11 +23,8 @@ class Home extends Component {
 
   render() {
     return (
-      <div>
-        {this.renderList()}
-        <button onClick={() => {
-          alert('click')
-        }}>click</button>  
+      <div className={styles.container}>
+        {this.renderList()} 
       </div>
     )
   }

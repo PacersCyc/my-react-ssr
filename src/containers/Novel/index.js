@@ -15,7 +15,7 @@ class Novel extends Component {
   renderList() {
     const { list } = this.props;
     return list.map(item => (
-      <div key={item.bid}>
+      <div className={styles.item} key={item.bid}>
         <h3>{item.bookname}</h3>
         <img src={item.book_cover}/>
       </div>
@@ -25,7 +25,7 @@ class Novel extends Component {
   render() {
     if (this.props.login) {
       return (
-        <div className={styles.test}>
+        <div className={styles.container}>
           {this.renderList()}
         </div>
       )

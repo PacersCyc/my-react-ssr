@@ -9,21 +9,19 @@ class Header extends Component {
   render() {
     const { login, handleLogin, handleLogout } = this.props
     return (
-      <div>
-        <div className={styles.test}>
-          <Link to="/">首页</Link><br/>
-          {
-            login ? (
-              <Fragment>
-                <Link to="/novel">小说</Link><br/>
-                <button onClick={handleLogout}>退出</button>  
-              </Fragment>
-            ) : (
-              <button onClick={handleLogin}>登录</button>
-            )
-          }   
-        </div> 
-      </div>
+      <div className={styles.container}>
+        <Link className={styles.item} to="/">首页</Link>
+        {
+          login ? (
+            <Fragment>
+              <Link className={styles.item} to="/novel">小说</Link>
+              <button className={styles.item} onClick={handleLogout}>退出</button>  
+            </Fragment>
+          ) : (
+            <button className={styles.item} onClick={handleLogin}>登录</button>
+          )
+        }   
+      </div> 
     )
   }
 }
