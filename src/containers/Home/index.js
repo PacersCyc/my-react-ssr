@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import { Helmet } from 'react-helmet'
 import { connect } from 'react-redux'
 import { getHomeList } from './store/actions'
 import styles from './style.css'
@@ -23,9 +24,15 @@ class Home extends Component {
 
   render() {
     return (
-      <div className={styles.container}>
-        {this.renderList()} 
-      </div>
+      <Fragment>
+        <Helmet>
+          <title>cyc的ssr</title>
+          <meta name="description" content="ssr的首页内容" />
+        </Helmet>
+        <div className={styles.container}>
+          {this.renderList()} 
+        </div>
+      </Fragment>
     )
   }
 }

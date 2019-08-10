@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
+import { Helmet } from 'react-helmet'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { getNovelList } from './store/actions'
@@ -25,9 +26,15 @@ class Novel extends Component {
   render() {
     if (this.props.login) {
       return (
-        <div className={styles.container}>
-          {this.renderList()}
-        </div>
+        <Fragment>
+          <Helmet>
+            <title>cyc的ssr---小说列表</title>
+            <meta name="description" content="ssr的小说页内容" />
+          </Helmet>
+          <div className={styles.container}>
+            {this.renderList()}
+          </div>
+        </Fragment>
       )
     } else {
       return <Redirect to="/"/>

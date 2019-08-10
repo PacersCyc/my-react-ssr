@@ -4,6 +4,7 @@ import { renderRoutes } from 'react-router-config'
 import { Route, StaticRouter, matchPath } from 'react-router-dom';
 import routes from '../Routes';
 import { Provider } from 'react-redux'
+import { Helmet } from 'react-helmet'
 
 export const render = (req, store, context) => {
   const content = renderToString((
@@ -13,12 +14,16 @@ export const render = (req, store, context) => {
       </StaticRouter>
     </Provider> 
   ))
+  const helmet = Helmet.renderStatic()
   const cssStr = context.css.length ? context.css.join('\n') : '';
 
   return `
     <html>
       <head>
-        <title>ssr</title>
+        <title>
+          ${helmet.title.toString()}
+          ${helmet.meta.toString()}
+        </title>
         <style>${cssStr}</style>
       </head>
       <body>
